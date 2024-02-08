@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Segura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+        .ssl-badge {
+            display: inline-block;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px; /* Asegura espacio antes del texto RGB */
+        }
+        .ssl-badge img,
+        .centered-image img {
+            width: 100px; /* Ajusta este valor según sea necesario */
+            height: auto;
+            display: block;
+            margin: 20px auto; /* Espacio arriba y abajo de la imagen */
+        }
+        #rgbText {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0; /* Espacio entre las imágenes y el texto */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Página Segura</h1>
+</header>
+
+<div class="container">
+    <!-- Imagen SSL por encima del texto RGB -->
+    <div class="ssl-badge">
+        <img src="ssl.png" alt="SSL Certificate Badge">
+    </div>
+    
+    <!-- Texto RGB -->
+    <div id="rgbText">Esta página está protegida con un certificado SSL, asegurando que todos los datos enviados y recibidos son cifrados y seguros.</div>
+
+    <!-- Imagen secundaria debajo del texto RGB -->
+    <img src="esquemassl.png" alt="Imagen Secundaria" class="centered-image">
+</div>
+
+<script>
+    const rgbText = document.getElementById('rgbText');
+    let angle = 0;
+
+    function changeColor() {
+        // Código existente para cambiar el color del texto RGB
+        const r = Math.round(127.5 * (1 + Math.sin(angle)));
+        const g = Math.round(127.5 * (1 + Math.sin(angle + 2 * Math.PI / 3)));
+        const b = Math.round(127.5 * (1 + Math.sin(angle + 4 * Math.PI / 3)));
+
+        rgbText.style.color = `rgb(${r}, ${g}, ${b})`;
+
+        angle += 0.01; // Ajusta este valor para cambiar la velocidad de cambio de color
+        requestAnimationFrame(changeColor);
+    }
+
+    changeColor();
+</script>
+
+<footer>
+    <p>&copy; 2024 Diseño realizado por Fernando Avivar Morales. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
